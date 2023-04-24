@@ -45,11 +45,11 @@ shop.addEventListener("click", e => {
 
 })
 
-document.querySelector("button#back").addEventListener("click", e => {
+document.querySelectorAll("button#back").forEach(i => i.addEventListener("click", e => {
     change("div#battleMenu", "main")
     change("div#inventoryMenu", "main")
     change("div#shopMenu", "main")
-})
+}))
 
 function change(actual, future) {
     document.querySelector(actual).style.display = "none"
