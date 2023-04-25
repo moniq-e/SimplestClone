@@ -72,9 +72,7 @@ button#shop {background-color: rgba(211, 179, 0, 0.822);}
 
 div#desc {
     position: absolute;
-    top: -150px;
     border: 2mm ridge rgba(186, 194, 42, 0.6);
     padding: 20px;
-    background-color:  rgb(19, 19, 19);;
+    background-color: rgb(19, 19, 19);
 }
-
