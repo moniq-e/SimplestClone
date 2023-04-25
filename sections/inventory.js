@@ -41,7 +41,7 @@ for (const div of document.querySelectorAll("div.slot")) {
             desc.style.display = 'block'
         }
 
-        let item = (div.parentElement.id == "grid" ? item = player.inv[div.id] : item = player.equip[div.id])
+        let item = (div.parentElement.id == "grid" ? player.inv[div.id] : player.equip[div.id])
 
         desc.querySelector('h3').innerText = item.name
         desc.querySelector('p').innerText = (item.atk ? `Ataque: ${item.atk}\n` : '') + (item.def ? `Defesa: ${item.def}\n` : '')
