@@ -1,55 +1,60 @@
 import { Enemy, Item } from "./classes.js"
 
-let grid = document.querySelector("div#grid"), battle = document.querySelector("button#battle"), inventory = document.querySelector("button#inventory"), shop = document.querySelector("button#shop")
-
-let def = 10, atk = 5, life = 10, inv = []
+/**
+ * @type {Item[]}
+ */
+let inv = []
+let def = 10, atk = 5, life = 10
 
 for (let i = 0; i < 24; i++) {
     let div = document.createElement("div")
     div.id = i
-    grid.appendChild(div)
+    div.appendChild(document.createElement("img"))
+    document.querySelector("#grid").appendChild(div)
 }
 
-battle.addEventListener("click", e => {
+document.querySelector("button#battle").addEventListener("click", e => {
     change("main", "div#battleMenu")
 
     let text = document.querySelector("div#battleMenu").querySelector("div#text")
-    let ene = new Enemy(1, 1, 1)
+    let enemy = new Enemy(1, 1, 1)
     let attacks = -1
 
-    while (ene.life > 0) {
+    while (enemy.life > 0) {
         attacks++
-        ene.life -= atk
+        enemy.life -= atk
     }
 
     for (let i = 0; i < attacks; i++) {
-        life -= ene.atk
+        life -= enemy.atk
     }
 
     if (life > 0) {
         text.innerText = "Você ganhou!"
-        inv.push(new Item())
+        inv.push(Item.get())
     } else text.innerText = "Você perdeu!"
 })
 
-inventory.addEventListener("click", e => {
-    change("main", "div#inventoryMenu")
+document.querySelector("button#inventory").addEventListener("click", e => {
+    change("main", "#inventoryMenu")
 
+    let menu = document.querySelector("#inventoryMenu")
     for (let i = 0; i < inv.length; i++) {
-        document.querySelector("div#battleMenu").querySelector(`div#${i}`).innerText = inv[i].text
+        menu.querySelector(`div[id='${i}']`).querySelector("img").src = inv[i].image
     }
 })
 
-shop.addEventListener("click", e => {
-    change("main", "div#shopMenu")
-
+document.querySelector("button#shop").addEventListener("click", e => {
+    change("main", "#shopMenu")
 })
 
-document.querySelectorAll("button#back").forEach(i => i.addEventListener("click", e => {
-    change("div#battleMenu", "main")
-    change("div#inventoryMenu", "main")
-    change("div#shopMenu", "main")
-}))
+for (let b of document.querySelectorAll(".back")) {
+    b.addEventListener("click", _ => {
+        change("#battleMenu", "main")
+        change("#inventoryMenu", "main")
+        change("#shopMenu", "main")
+    })
+}
 
 function change(actual, future) {
     document.querySelector(actual).style.display = "none"

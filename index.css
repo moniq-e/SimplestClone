@@ -34,7 +34,12 @@ div#grid {
 div#grid div {
     width: 50px;
     height: 50px;
-    border: 1px solid white;    
+    border: 1px solid white;
+}
+
+div#grid div img {
+    width: 100%;
+    height: auto;
 }
 
 hr {
@@ -53,7 +58,7 @@ button:hover{
     cursor: pointer;
     color: rgb(27, 27, 27);
 }
-button#back {background-color: red;}
+button.back {background-color: red;}
 button#battle {background-color: chocolate;}
 button#inventory {background-color: green;}
 button#shop {background-color: rgba(211, 179, 0, 0.822);}

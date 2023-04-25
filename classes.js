@@ -13,11 +13,32 @@ export class Item {
         this.atk = atk
     }
 
-    static getItem(name) {
-        if (items[name]) return items[name]
+    static get(name) {
+        if (!name) {
+            let keys = Object.keys(items)
+            name = keys[Math.floor(Math.random() * keys.length)]
+        }
+        return items[name].clone()
+    }
+
+    get image() {
+        return `./images/${this.name}.png`
+    }
+
+    clone() {
+        return new Item(this.name, this.def, this.atk)
     }
 }
 
-let items = {
-    sword: new Item()
+/**
+ * @type {{[key: string]: Item}}
+ */
+const items = {
+    sword: new Item("sword", 0, 5)
+}
+
+export class Player {
+    constructor() {
+        //
+    }
 }
