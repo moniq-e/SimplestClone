@@ -5,14 +5,14 @@ export const player = new Player()
 // INVENTORY SETUP
 for (let i = 0; i < 24; i++) {
     let div = document.createElement("div")
-    div.id = i
+    div.id = 'inv' + i
     div.className = "slot"
     div.appendChild(document.createElement("img"))
     document.querySelector("#grid").appendChild(div)
 }
 for (let i = 0; i < 8; i++) {
     let div = document.createElement("div")
-    div.id = i
+    div.id = 'equip' + i
     div.className = "slot"
     div.appendChild(document.createElement("img"))
     document.querySelector("#equipment").appendChild(div)

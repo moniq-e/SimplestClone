@@ -72,7 +72,12 @@ button#shop {background-color: rgba(211, 179, 0, 0.822);}
 
 div#desc {
     position: absolute;
+    display: none;
     border: 2mm ridge rgba(186, 194, 42, 0.6);
     padding: 20px;
     background-color: rgb(19, 19, 19);
+}
+
+div#desc.active {
+    display: block;
 }
