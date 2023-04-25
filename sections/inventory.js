@@ -8,8 +8,8 @@ document.querySelector("button#inventory").addEventListener("click", e => {
 
 for (const div of document.querySelectorAll("div#grid div")) {
     div.addEventListener("click", e => {
-        if ( div.children[0].getAttribute("src") != '' && player.addEquip(player.inv[div.id.match(/\d+/g)[0]]) ) {
-            player.removeItem(div.id.match(/\d+/g)[0])
+        if (player.addEquip(player.inv[div.id])) {
+            player.removeItem(div.id)
             drawInv()
         }
     })
@@ -17,9 +17,9 @@ for (const div of document.querySelectorAll("div#grid div")) {
 
 for (const div of document.querySelectorAll("div#equipment div")) {
     div.addEventListener("click", e => {
-        if ( div.children[0].getAttribute("src") != '' && player.inv.length < 24 ) {
-            player.inv.push(player.equip[div.id.match(/\d+/g)[0]])
-            player.removeEquip(div.id.match(/\d+/g)[0])
+        if (player.inv.length < 24) {
+            player.inv.push(player.equip[div.id])
+            player.removeEquip(div.id)
             drawInv()
         }
     })
@@ -27,28 +27,32 @@ for (const div of document.querySelectorAll("div#equipment div")) {
 
 function drawInv() {
     for (let i = 0; i < 24; i++) {
-        document.querySelector(`div#grid div[id='inv${i}'] img`).src = (player.inv[i] ? player.inv[i].image : '')
+        document.querySelector(`div#grid div[id='${i}'] img`).src = (player.inv[i] ? player.inv[i].image : '')
     }
     for (let i = 0; i < 8; i++) {
-        document.querySelector(`div#equipment div[id='equip${i}'] img`).src = (player.equip[i] ? player.equip[i].image : '')
+        document.querySelector(`div#equipment div[id='${i}'] img`).src = (player.equip[i] ? player.equip[i].image : '')
     }
 }
 
 let desc = document.querySelector("div#desc")
 for (const div of document.querySelectorAll("div.slot")) {
     div.addEventListener("mouseenter", e => {
-        if (div.children[0].getAttribute("src") != '') {
-            desc.classList.add("active")
-        }        
-    })
-    
-    div.addEventListener("mouseleave", e => {
-        desc.classList.remove("active")
+        if (div.querySelector('img').src.endsWith('.png')) {
+            desc.style.display = 'block'
+        }
+
+        let item = (div.parentElement.id == "grid" ? item = player.inv[div.id] : item = player.equip[div.id])
+
+        desc.querySelector('h3').innerText = item.name
+        desc.querySelector('p').innerText = (item.atk ? `Ataque: ${item.atk}\n` : '') + (item.def ? `Defesa: ${item.def}\n` : '')
     })
 
     div.addEventListener("mousemove", e => {
-        // Descrição seguir mouse
-        desc.style.left = e.clientX + "px"
-        desc.style.top = e.clientY - innerHeight * 0.1 + "px"
+        desc.style.left = e.clientX + 20 + "px"
+        desc.style.top = e.clientY - desc.offsetHeight - 20 + "px"
+    })
+
+    div.addEventListener("mouseleave", e => {
+        desc.style.display = 'none'
     })
 }

@@ -10,7 +10,11 @@ export default class Player {
     constructor() {
         this.def = 5
         this.atk = 5
+        this.maxLife = 20
         this.life = 20
+        this.lvl = 0
+        this.maxXp = 10
+        this.xp = 0
         this.equip = []
         this.inv = []
     }

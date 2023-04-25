@@ -37,5 +37,8 @@ const items = {
     goldenboots: () => new Item("BotaOuro", "boots", 15, 0),
     copperchest: () => new Item("PeitoralCobre", "chest", 5, 0),
     ironchest: () => new Item("PeitoralFerro", "chest", 10, 0),
-    goldenchest: () => new Item("PeitoralOuro", "chest", 15, 0)
+    goldenchest: () => new Item("PeitoralOuro", "chest", 15, 0),
+    coppersword: () => new Item("EspadaCobre", "sword", 0, 5),
+    ironsword: () => new Item("EspadaFerro", "sword", 0, 10),
+    goldensword: () => new Item("EspadaOuro", "sword", 0, 15)
 }
