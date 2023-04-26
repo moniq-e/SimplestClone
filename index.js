@@ -32,5 +32,5 @@ export function change(actual, future) {
 }
 
 import("./sections/battle.js")
-import("./sections/inventory.js")
 import("./sections/shop.js")
+import("./sections/inventory.js")

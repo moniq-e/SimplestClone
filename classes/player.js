@@ -5,10 +5,10 @@ export default class Player {
     constructor() {
         this.def = 5
         this.atk = 5
-        this.maxLife = 20
-        this.life = 20
-        this.lvl = 0
-        this.maxXp = 10
+        this.maxLife = 10
+        this.life = 10
+        this.lvl = 1
+        this.maxXp = 50
         this.xp = 0
         this.coins = 0
         /**
@@ -20,10 +20,23 @@ export default class Player {
          */
         this.inv = []
 
-        setInterval(this.updatePanel, 1000)
+        setInterval(this.updatePanel, 500)
     }
 
     updatePanel() {
+        if ((player.maxLife - player.life) && player.coins) {
+            player.coins--
+            player.life++
+        }
+
+        if (player.xp >= player.maxXp) {
+            player.lvl += Math.floor(player.xp / player.maxXp)
+            player.xp = player.xp % player.maxXp
+            player.maxXp = player.lvl * 50
+            player.maxLife += player.lvl * 5
+            player.life += Math.floor(player.lvl * 2.5)
+        }
+
         document.querySelector('span#hp').innerText = player.life
         document.querySelector('div#hp').style.width = player.life / player.maxLife * 100 + "%"
         document.querySelector('span#xp').innerText = player.lvl

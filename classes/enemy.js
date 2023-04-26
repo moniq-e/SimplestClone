@@ -1,3 +1,5 @@
+import { r } from "./util.js"
+
 export default class Enemy {
     constructor(name, def, atk, life, lvl) {
         this.name = name
@@ -8,7 +10,7 @@ export default class Enemy {
     }
 
     static get(name) {
-        if (!name) return enemys[Math.floor(Math.random() * enemys.length)]()
+        if (!name) return enemys[r(0, enemys.length - 1)]()
         else return enemys.find(f => f().name == name)()
     }
 
@@ -18,5 +20,14 @@ export default class Enemy {
 }
 
 const enemys = [
-    () => new Enemy("Esqueleto", 0, 3, 10, 0),
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Zumbi", 5, 5, 10, 2),
+    () => new Enemy("Aranha", 15, 10, 15, 3),
+    () => new Enemy("Grandalhao", 20, 15, 20, 4),
+    //fazer bixos
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Esqueleto", 0, 3, 10, 1),
 ]

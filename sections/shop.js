@@ -3,12 +3,12 @@ import Item from "../classes/item.js"
 
 const items = Item.getAll()
 for (let i = 0; i < items.length; i++) {
-    let div = document.createElement("div"), img = document.createElement("img"), p = document.createElement('p')
+    let div = document.createElement("div"), img = document.createElement("img"), desc = document.createElement('p')
     div.id = i
     div.className = "slot"
     img.src = items[i].image
-    p.innerText = "Clique para comprar"
-    div.append(img, p)
+    desc.innerText = "Clique para comprar"
+    div.append(img, desc)
     document.querySelector("#mostruario").appendChild(div)
 }
 

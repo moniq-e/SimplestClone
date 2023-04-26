@@ -1,10 +1,10 @@
 * {
     margin: 0;
-    font-family: 'AuX DotBitC', sans-serif;
+    /*font-family: 'AuX DotBitC', sans-serif;
     font-family: 'AuX DotBitC Xtra', sans-serif;
-    font-family: 'AuX DotBitC Xtra SmallCaps', sans-serif;
+    font-family: 'AuX DotBitC Xtra SmallCaps', sans-serif;*/
     font-family: 'AuX DotBitC Xtra Bold', sans-serif;
-text-align: center;    
+    text-align: center;    
     color: wheat;
 }
 
@@ -39,22 +39,22 @@ div#mostruario {
     grid-template-columns: repeat(2, auto);
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 35em
+    max-height:  70vh;
 }
 
-div#mostruario::-webkit-scrollbar {
+div#mostruario::-webkit-scrollbar, div#grid::-webkit-scrollbar, div#moblist::-webkit-scrollbar {
     display: none;
 }
 
 div.slot {
-    width: 50px;
-    height: 50px;
+    width: 10vh;
+    height: 10vh;
     border: 1px solid white ;
     border-collapse: collapse;
 }
 
 div#mostruario div.slot {
-    width: max-content;
+    width: 25vw;
     height: max-content;
 }
 
@@ -65,8 +65,8 @@ div div img {
     image-rendering: pixelated;
 }
 
-div#mostruario div.slot img {
-    width: 25%;
+div#mostruario .slot img {
+    width: 30%;
 }
 
 hr {
@@ -85,10 +85,11 @@ button {
     background-color: green;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     color: rgb(27, 27, 27);
 }
+
 button.back {background-color: red;}
 button#battle {background-color: chocolate;}
 button#inventory {background-color: green;}
@@ -119,15 +120,57 @@ div.barra div#xp {
     height: 100%;
 }
 
+/*mexi no seu css inteiro, mexe denovo por favor*/
+div#moblist {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height:  70vh;
+}
+div#moblist div {
+    width: max-content;
+    height: fit-content;
+    border: 2px solid wheat;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+div#moblist div:hover {
+    cursor: pointer;
+}
+
 @media (orientation: portrait) { 
-    main, div#inventoryMenu {
-        width: 75%;
-        border: 4mm ridge rgba(186, 194, 42, 0.6) inset;
+    main, div#inventoryMenu, div#shopMenu {
+        width: calc(100vw - 12mm - 20px);
+        height: calc(100vh - 12mm - 20px);
     }
+
     div#grid, div#equipment {
         grid-template-columns: repeat(4, auto);
-        justify-items: center;
         align-content: space-evenly;
+    }
+
+    div#grid {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        max-height:  50vh;
+        align-content: stretch;
+    }
+
+    div#grid, div#equipment, div#mostruario {
+        justify-items: center;
         align-items: center;
+    }
+
+    div.slot {
+        width: 19vw;
+        height: 19vw;
+    }
+
+    div#mostruario div.slot {
+        width: 35vw;
+    }
+
+    div#mostruario {
+        max-height: 75vh;
     }
 }

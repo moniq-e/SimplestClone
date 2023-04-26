@@ -1,3 +1,5 @@
+import { r } from "./util.js"
+
 export default class Item {
     constructor(name, category, def, atk, price) {
         this.name = name
@@ -8,7 +10,7 @@ export default class Item {
     }
 
     static get(name) {
-        if (!name) return items[Math.floor(Math.random() * items.length)]()
+        if (!name) return items[r(0, items.length - 1)]()
         else return items.find(f => f().name == name)()
     }
 
