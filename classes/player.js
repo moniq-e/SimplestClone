@@ -1,12 +1,7 @@
+import Item from "./item.js"
+import { player } from "../index.js"
+
 export default class Player {
-    /**
-     * @type {Item[]}
-     */
-    inv
-    /**
-     * @type {Item[]}
-     */
-    equip
     constructor() {
         this.def = 5
         this.atk = 5
@@ -15,8 +10,25 @@ export default class Player {
         this.lvl = 0
         this.maxXp = 10
         this.xp = 0
+        this.coins = 0
+        /**
+         * @type {Item[]}
+         */
         this.equip = []
+        /**
+         * @type {Item[]}
+         */
         this.inv = []
+
+        setInterval(this.updatePanel, 1000)
+    }
+
+    updatePanel() {
+        document.querySelector('span#hp').innerText = player.life
+        document.querySelector('div#hp').style.width = player.life / player.maxLife * 100 + "%"
+        document.querySelector('span#xp').innerText = player.lvl
+        document.querySelector('div#xp').style.width = player.xp / player.maxXp * 100 + "%"
+        document.querySelector('span#coin').innerText = player.coins
     }
 
     getAtk() {

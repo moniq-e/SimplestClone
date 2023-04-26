@@ -16,3 +16,14 @@ for (let i = 0; i < items.length; i++) {
 document.querySelector("button#shop").addEventListener("click", e => {
     change("main", "#shopMenu")
 })
+
+for (const div of document.querySelectorAll("#mostruario div")) {
+    div.addEventListener("click", _ => {
+        let item = items[div.id]
+        if (player.coins >= item.price && player.inv.length < 24) {
+            player.coins -= item.price
+            item.price = Math.floor(item.price / 2)
+            player.inv.push(item)
+        }
+    })
+}

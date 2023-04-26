@@ -39,7 +39,7 @@ div#mostruario {
     grid-template-columns: repeat(2, auto);
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 60%; /* bug */
+    height: 35em
 }
 
 div#mostruario::-webkit-scrollbar {

@@ -1,16 +1,6 @@
 import Player from "./classes/player.js"
 export const player = new Player()
 
-let vida = document.querySelector('span#hp')
-let xp = document.querySelector('span#xp')
-let barvida = document.querySelector('div#hp')
-let barxp = document.querySelector('div#xp')
-
-vida.innerText = player.life
-barvida.style.width = Math.floor(player.life / player.maxLife) * 100 + "%"
-xp.innerText = player.xp
-barxp.style.width = Math.floor(player.xp / player.maxXp) * 100 + "%"
-
 // INVENTORY SETUP
 for (let i = 0; i < 24; i++) {
     let div = document.createElement("div")

@@ -39,25 +39,25 @@ function drawInv() {
 
 let desc = document.querySelector("div#desc"), items = Item.getAll()
 for (const div of document.querySelectorAll("div.slot")) {
-    div.addEventListener("mouseenter", e => {
+    div.addEventListener("mouseenter", _ => {
         if (div.querySelector('img').src.endsWith('.png')) {
             desc.style.display = 'block'
 
-            let item;
+            let item
             switch (div.parentElement.id) {
                 case "grid":
-                    item = player.inv[div.id];
-                    break;
+                    item = player.inv[div.id]
+                    break
                 case "equipment":
-                    item = player.equip[div.id];
-                    break;
+                    item = player.equip[div.id]
+                    break
                 case "mostruario":
-                    item = items[div.id];
-                    break;
+                    item = items[div.id]
+                    break
             }
 
             desc.querySelector('h3').innerText = item.name
-            desc.querySelector('p').innerText = (item.atk ? `Ataque: ${item.atk}\n` : '') + (item.def ? `Defesa: ${item.def}\n` : '')
+            desc.querySelector('p').innerText = (item.atk ? `Ataque: ${item.atk}\n` : '') + (item.def ? `Defesa: ${item.def}\n` : '') + `Preço: $${item.price}`
         }
     })
 
