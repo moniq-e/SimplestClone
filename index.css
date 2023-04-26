@@ -27,7 +27,7 @@ main, #battleMenu, #inventoryMenu, #shopMenu {
     display: none;
 }
 
-div#grid, div#equipment {
+div#grid, div#equipment, div#mostruario {
     display: grid;
     grid-gap: 2px;
     grid-template-columns: repeat(8, auto);
@@ -35,11 +35,27 @@ div#grid, div#equipment {
     border: 2px solid black;
 }
 
-div#grid div, div#equipment div {
+div#mostruario {
+    grid-template-columns: repeat(2, auto);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 60%; /* bug */
+}
+
+div#mostruario::-webkit-scrollbar {
+    display: none;
+}
+
+div.slot {
     width: 50px;
     height: 50px;
     border: 1px solid white ;
     border-collapse: collapse;
+}
+
+div#mostruario div.slot {
+    width: max-content;
+    height: max-content;
 }
 
 /* talvez de conflito */
@@ -47,6 +63,10 @@ div div img {
     width: 100%;
     height: auto;
     image-rendering: pixelated;
+}
+
+div#mostruario div.slot img {
+    width: 25%;
 }
 
 hr {
