@@ -22,14 +22,15 @@ for (const div of document.querySelectorAll("#moblist div")) {
     div.addEventListener("click", _ => {
         let enemy = mobs[parseInt(div.id)]
         
-        let playerAtk = player.getAtk() * (player.getAtk() / enemy.def > 0.95 ? 0.95 : player.getAtk() / enemy.def)
-        let enemyAtk = enemy.atk * (enemy.atk / player.def > 0.95 ? 0.95 : enemy.atk / player.def)
+        let playerAtk = player.getAtk() * ((player.getAtk()) / enemy.def > 0.95 ? 0.95 : (player.getAtk() / enemy.def))
+        let enemyAtk = enemy.atk * ((enemy.atk / player.def) > 0.95 ? 0.95 : (enemy.atk / player.def))
 
         do {
             enemy.life -= playerAtk
             if (enemy.life > 0) {
                 player.life -= enemyAtk
             }
+            console.log("oi")
         } while (player.life > 0 || enemy.life > 0);
     })
 }
