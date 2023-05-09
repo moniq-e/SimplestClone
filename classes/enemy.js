@@ -20,7 +20,7 @@ export default class Enemy {
 }
 
 const enemys = [
-    () => new Enemy("Esqueleto", 0, 3, 10, 1),
+    () => new Enemy("Esqueleto", 1, 3, 10, 1),
     () => new Enemy("Zumbi", 5, 5, 10, 2),
     () => new Enemy("Aranha", 15, 10, 15, 3),
     () => new Enemy("Grandalhao", 20, 15, 20, 4)

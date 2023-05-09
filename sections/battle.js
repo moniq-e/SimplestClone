@@ -20,17 +20,22 @@ document.querySelector("button#battle").addEventListener("click", e => {
 
 for (const div of document.querySelectorAll("#moblist div")) {
     div.addEventListener("click", _ => {
-        let enemy = mobs[parseInt(div.id)]
+        let enemy = Enemy.get(mobs[parseInt(div.id)].name)
         
-        let playerAtk = player.getAtk() * ((player.getAtk()) / enemy.def > 0.95 ? 0.95 : (player.getAtk() / enemy.def))
-        let enemyAtk = enemy.atk * ((enemy.atk / player.def) > 0.95 ? 0.95 : (enemy.atk / player.def))
+        let playerAtk = parseInt(player.getAtk() * ((player.getAtk() / enemy.def) > 0.95 ? 0.95 : (player.getAtk() / enemy.def)))
+        let enemyAtk = parseInt(enemy.atk * ((enemy.atk / player.def) > 0.95 ? 0.95 : (enemy.atk / player.def)))
 
         do {
             enemy.life -= playerAtk
             if (enemy.life > 0) {
                 player.life -= enemyAtk
             }
-            console.log("oi")
-        } while (player.life > 0 || enemy.life > 0);
+        } while (player.life > 0 && enemy.life > 0);
+
+        if (player.life > 0) {
+            if (Math.random() >= 0.9) player.inv.push(Item.get())
+            player.coins += r(15, 30) * enemy.lvl
+            player.xp += r(15, 30) * enemy.lvl
+        }
     })
 }

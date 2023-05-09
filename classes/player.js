@@ -3,8 +3,8 @@ import { player } from "../index.js"
 
 export default class Player {
     constructor() {
-        this.def = 5
-        this.atk = 5
+        this.def = 3
+        this.atk = 3
         this.maxLife = 10
         this.life = 10
         this.lvl = 1
@@ -38,7 +38,7 @@ export default class Player {
         }
 
         document.querySelector('span#hp').innerText = player.life
-        document.querySelector('div#hp').style.width = player.life / player.maxLife * 100 + "%"
+        document.querySelector('div#hp').style.width = (player.life / player.maxLife) * 100 + "%"
         document.querySelector('span#xp').innerText = player.lvl
         document.querySelector('div#xp').style.width = player.xp / player.maxXp * 100 + "%"
         document.querySelector('span#coin').innerText = player.coins
