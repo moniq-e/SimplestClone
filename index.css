@@ -140,8 +140,8 @@ div#moblist div:hover {
 
 @media (orientation: portrait) { 
     main, div#inventoryMenu, div#shopMenu {
-        width: calc(100vw - 12mm - 20px);
-        height: calc(100vh - 12mm - 20px);
+        width: calc(100dvw - 12mm - 20px);
+        height: calc(100dvh - 12mm - 20px);
     }
 
     div#grid, div#equipment {
@@ -152,7 +152,7 @@ div#moblist div:hover {
     div#grid {
         overflow-y: scroll;
         overflow-x: hidden;
-        max-height:  50vh;
+        max-height:  50dvh;
         align-content: stretch;
     }
 
@@ -162,15 +162,15 @@ div#moblist div:hover {
     }
 
     div.slot {
-        width: 19vw;
-        height: 19vw;
+        width: 19dvw;
+        height: 19dvw;
     }
 
     div#mostruario div.slot {
-        width: 35vw;
+        width: 35dvw;
     }
 
     div#mostruario {
-        max-height: 75vh;
+        max-height: 75dvh;
     }
 }
