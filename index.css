@@ -127,7 +127,8 @@ div#moblist {
     max-height:  70vh;
 }
 div#moblist div {
-    width: max-content;
+    width: fit-content;
+    overflow-wrap: break-word;
     height: fit-content;
     border: 2px solid wheat;
     padding: 10px;
@@ -139,7 +140,7 @@ div#moblist div:hover {
 }
 
 @media (orientation: portrait) { 
-    main, div#inventoryMenu, div#shopMenu {
+    main, #inventoryMenu, #shopMenu, #battleMenu {
         width: calc(100dvw - 12mm - 20px);
         height: calc(100dvh - 12mm - 20px);
     }
