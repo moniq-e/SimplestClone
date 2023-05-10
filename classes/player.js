@@ -11,6 +11,7 @@ export default class Player {
         this.maxXp = 50
         this.xp = 0
         this.coins = 0
+        this.init = 0
         /**
          * @type {Item[]}
          */

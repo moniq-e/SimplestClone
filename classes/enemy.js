@@ -7,6 +7,7 @@ export default class Enemy {
         this.atk = atk
         this.life = life
         this.lvl = lvl
+        this.init = 0
     }
 
     static get(name) {
@@ -20,7 +21,7 @@ export default class Enemy {
 }
 
 const enemys = [
-    () => new Enemy("Esqueleto", 1, 3, 10, 1),
+    () => new Enemy("Esqueleto", 1, 3, 5, 1),
     () => new Enemy("Zumbi", 5, 5, 10, 2),
     () => new Enemy("Aranha", 15, 10, 15, 3),
     () => new Enemy("Grandalhao", 20, 15, 20, 4)

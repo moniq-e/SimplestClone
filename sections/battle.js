@@ -20,22 +20,36 @@ document.querySelector("button#battle").addEventListener("click", e => {
 
 for (const div of document.querySelectorAll("#moblist div")) {
     div.addEventListener("click", _ => {
-        let enemy = Enemy.get(mobs[parseInt(div.id)].name)
-        
-        let playerAtk = parseInt(player.getAtk() * ((player.getAtk() / enemy.def) > 0.95 ? 0.95 : (player.getAtk() / enemy.def)))
-        let enemyAtk = parseInt(enemy.atk * ((enemy.atk / player.def) > 0.95 ? 0.95 : (enemy.atk / player.def)))
-
-        do {
-            enemy.life -= playerAtk
-            if (enemy.life > 0) {
-                player.life -= enemyAtk
-            }
-        } while (player.life > 0 && enemy.life > 0);
-
         if (player.life > 0) {
-            if (Math.random() >= 0.9) player.inv.push(Item.get())
-            player.coins += r(15, 30) * enemy.lvl
-            player.xp += r(15, 30) * enemy.lvl
+            const enemy = Enemy.get(mobs[parseInt(div.id)].name)
+
+            let playerAtk = parseInt(player.getAtk() * ((player.getAtk() / enemy.def) > 0.95 ? 0.95 : (player.getAtk() / enemy.def)))
+            let enemyAtk = parseInt(enemy.atk * ((enemy.atk / player.def) > 0.95 ? 0.95 : (enemy.atk / player.def)))
+
+            enemy.init = r(1, 20) + enemy.lvl
+            player.init = r(1, 20) + player.lvl
+
+            do {
+                if (player.init > enemy.init) {
+                    enemy.life -= playerAtk
+                    if (enemy.life > 0) {
+                        player.life -= enemyAtk
+                    }
+                } else {
+                    player.life -= enemyAtk
+                    if (player.life > 0) {
+                        enemy.life -= playerAtk
+                    }
+                }
+            } while (player.life > 0 && enemy.life > 0);
+
+            if (player.life > 0) {
+                if (Math.random() >= 0.9) player.inv.push(Item.get())
+                player.coins += r(15, 30) * enemy.lvl
+                player.xp += r(15, 30) * enemy.lvl
+            } else {
+                player.life = 0
+            }
         }
     })
 }
